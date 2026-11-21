@@ -1,0 +1,26 @@
+name: Portfolio smoke tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  python-sqlite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python files
+        run: python -m compileall -q .
+      - name: Run every project twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          for project in 01-financial-performance 02-aml-transaction-monitoring 03-kyc-customer-risk 04-business-intelligence 05-esg-risk-explorer 06-credit-portfolio 07-payment-anomaly-detection 08-procurement-spend 09-customer-cohort-retention 10-fx-exposure; do
+            echo "Testing $project"
+            python "$project/main.py"
+            python "$project/main.py"
+          done
