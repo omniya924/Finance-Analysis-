@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS orders (order_id INTEGER PRIMARY KEY, customer_id TEXT NOT NULL, order_month TEXT NOT NULL, revenue_gbp REAL NOT NULL CHECK(revenue_gbp>=0));
