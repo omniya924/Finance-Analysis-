@@ -1,41 +1,29 @@
-# Finance & Business Analytics Portfolio
+# Project notes
 
-Five beginner-to-intermediate demonstration projects combining **SQL**, **Python** and **HTML**. The code is designed to be readable, explainable in interviews, and extendable.
+## 01 — Financial performance
 
-| Project | Business question | Files |
-|---|---|---|
-| [Financial Performance](01-financial-performance/) | Which companies show stronger margins and liquidity? | SQL schema, Python ratio report, HTML overview |
-| [AML Transaction Monitoring](02-aml-transaction-monitoring/) | Which synthetic transactions merit further review? | SQL schema, Python rules, HTML overview |
-| [KYC Customer Risk](03-kyc-customer-risk/) | How can illustrative risk factors be documented transparently? | SQL schema, Python scoring, HTML overview |
-| [Business Intelligence](04-business-intelligence/) | Which regions generate more revenue and contribution? | SQL schema, Python KPIs, HTML overview |
-| [ESG Indicator Explorer](05-esg-risk-explorer/) | How do sample indicators vary within an industry? | SQL schema, Python screening, HTML overview |
+The SQL report calculates gross margin, net margin, current ratio, and debt-to-assets for three fictional companies in 2024 and 2025. `NULLIF` prevents division-by-zero errors in the ratio expressions. The financial data is simplified: it is not a complete set of financial statements.
 
-## Requirements
+## 02 — Transaction monitoring
 
-Python 3.9+; no third-party packages required. SQLite is included with Python.
+Three rules create review alerts: a transaction of at least GBP 10,000, a transaction whose country code is not GB, and three or more transactions by one customer on the same day. Multiple alerts can be raised for the same transaction. The GBP threshold and geographic rule are deliberately illustrative and are not regulatory thresholds or conclusions about suspicious activity.
 
-## How to run
+## 03 — Customer risk
 
-From the repository root:
+The scoring example adds points for geography, PEP status, ownership complexity, and expected monthly volume. The weights and bands are arbitrary demonstration values. Real customer due diligence depends on verified evidence, context, applicable policy, and human assessment.
 
-```bash
-python 01-financial-performance/main.py
-python 02-aml-transaction-monitoring/main.py
-python 03-kyc-customer-risk/main.py
-python 04-business-intelligence/main.py
-python 05-esg-risk-explorer/main.py
-```
+## 04 — Sales reporting
 
-Each script creates a `.db` file in its own folder and prints its results. Open `dashboard.html` in a browser for a **static project overview**. The HTML files are not connected to the database and do not visualize live output.
+Revenue is units multiplied by unit price. Contribution is units multiplied by the difference between unit price and unit cost. Contribution margin divides contribution by revenue. Fixed operating expenses are not included, so contribution should not be interpreted as net profit.
 
-## Interview discussion ideas
+## 05 — ESG indicators
 
-- Explain why `NULLIF` is used in financial ratio denominators.
-- Describe why AML monitoring rules produce alerts for review, not proof of misconduct.
-- Discuss limitations of a weighted KYC score and the importance of verified evidence and human decisions.
-- Distinguish contribution margin from net profit.
-- Explain why ESG indicators should be compared within relevant industries and reporting definitions.
+The example compares emissions intensity within each fictional industry and displays employee turnover and board independence. Units and reporting boundaries are simplified. The project does not produce a composite ESG score or predict future sustainability outcomes.
 
-## Limitations and next steps
+## Running the examples
 
-All records are **fictional** and analytical methods are **illustrative**, not validated. Potential next steps include automated tests, real interactive dashboards, data dictionaries, input validation, peer-reviewed AML/KYC methodology, and an expanded ESG modeling workflow. Do not use these outputs for real-world compliance, lending, investment or customer decisions.
+Use Python 3.9+ and run `python <project-folder>/main.py` from the repository root. Each script writes a SQLite `.db` file beside itself. The HTML files are static explanatory pages. Run `python tests/smoke_test.py` for repeat-execution checks.
+
+## Scope
+
+These examples focus on SQL queries and reproducible Python scripts. They do not include production data pipelines, authentication, interactive charting, statistical validation, or compliance model governance.
