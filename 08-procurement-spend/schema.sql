@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS purchases (purchase_id INTEGER PRIMARY KEY, supplier TEXT NOT NULL, category TEXT NOT NULL, amount_gbp REAL NOT NULL CHECK(amount_gbp>=0), purchase_date TEXT NOT NULL);
