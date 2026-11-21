@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS payments (payment_id INTEGER PRIMARY KEY, account_id TEXT NOT NULL, amount_gbp REAL NOT NULL, country TEXT NOT NULL, payment_time TEXT NOT NULL);
