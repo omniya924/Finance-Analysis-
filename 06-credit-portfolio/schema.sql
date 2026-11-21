@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS loans (loan_id INTEGER PRIMARY KEY, segment TEXT NOT NULL, principal REAL NOT NULL CHECK(principal>0), annual_rate REAL NOT NULL, months INTEGER NOT NULL CHECK(months>0), days_past_due INTEGER NOT NULL CHECK(days_past_due>=0));
