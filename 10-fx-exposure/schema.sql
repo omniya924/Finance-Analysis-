@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS positions (position_id INTEGER PRIMARY KEY, business_unit TEXT NOT NULL, currency TEXT NOT NULL, amount_local REAL NOT NULL);
+CREATE TABLE IF NOT EXISTS fx_rates (currency TEXT PRIMARY KEY, gbp_per_unit REAL NOT NULL CHECK(gbp_per_unit>0));
